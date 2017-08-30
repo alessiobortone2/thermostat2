@@ -39,4 +39,13 @@ describe('Thermostat', function() {
       expect(thermostat.temperature).toBe(27)
   });
 
+  it('resets the temperature to 20 degrees', function() {
+    thermostat.reset();
+    expect(thermostat.temperature).toBe(20)
+  });
+
+  it('checks the usage of the thermostat', function() {
+    thermostat.check(26);
+    expect(thermostat.usage).toBe('high-usage')
+  });
 });
