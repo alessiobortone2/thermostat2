@@ -11,4 +11,10 @@ describe('Thermostat', function() {
   });
 
 
+  it('should increase with an up function', function () {
+      thermostat.up(1);
+      expect(thermostat.temperature}).toBe(21);
+    });
+
+
 });
