@@ -6,19 +6,13 @@ function Thermostat(temperature = 20) {
 
 Thermostat.prototype.up = function(unit) {
   if(this.powersave && (this.temperature + unit) > 25) {
-   throw "Powersave mode is on, can't go above 25";
-   console.log(this.powersave);
-   console.log(this.temperature);
+  throw "Powersave mode is on, can't go above 25";
   }
-   else if(this.powersafe === false && (this.temperature + unit) > 32) {
-    throw "You wasteful anti-environmental you";
-    console.log(this.powersave);
-    console.log(this.temperature);
+   else if(this.powersave === false && (this.temperature + unit) > 32) {
+  throw "You wasteful anti-environmental you";
   }
   else {
     this.temperature += unit;
-    console.log(this.powersave);
-    console.log(this.temperature);
   };
 };
 

@@ -23,10 +23,10 @@ describe('Thermostat', function() {
   it('min temperature is 10 degrees', function() {
     expect(thermostat.MIN_TEMP).toBe(10)
   });
-  // 
-  // it('in power saving mode max temp is 25', function() {
-  //   expect(function() {thermostat.up(8)}).toThrow("Powersave mode is on, can't go above 25");
-  // });
+  //
+  it('in power saving mode max temp is 25', function() {
+    expect(function() {thermostat.up(8)}).toThrow("Powersave mode is on, can't go above 25");
+  });
 
   it('power saving mode is off then max temp is 32', function() {
     thermostat.powersave = false;
@@ -36,7 +36,7 @@ describe('Thermostat', function() {
   it('power saving mode is off and we remain below 32 degrees', function() {
       thermostat.powersave = false;
       thermostat.up(7);
-      expect(function() {thermostat.temperature}).toBe(27)
+      expect(thermostat.temperature).toBe(27)
   });
 
 });
