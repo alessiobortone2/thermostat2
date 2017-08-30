@@ -19,4 +19,8 @@ describe('Thermostat', function() {
       thermostat.down(1);
       expect(thermostat.temperature).toBe(19);
   });
+
+  it('min temperature is 10 degrees', function () {
+    expect(thermostat.MIN_TEMP).toBe(10)
+  });
 });
