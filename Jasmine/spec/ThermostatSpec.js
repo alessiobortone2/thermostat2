@@ -25,17 +25,20 @@ describe('Thermostat', function() {
   });
   //
   it('in power saving mode max temp is 25', function() {
-    expect(function() {thermostat.up(8)}).toThrow("Powersave mode is on, can't go above 25");
+    for (i = 1; i < 6; i++) {thermostat.up()}
+    expect(function() {thermostat.up()}).toThrow("Powersave mode is on, can't go above 25");
   });
 
   it('power saving mode is off then max temp is 32', function() {
     thermostat.powersave = false;
-    expect(function() {thermostat.up(15)}).toThrow("You wasteful anti-environmental you")
+    for (i = 1; i < 13; i++) {thermostat.up()}
+    expect(function() {thermostat.up()}).toThrow("You wasteful anti-environmental you")
   });
 
   it('power saving mode is off and we remain below 32 degrees', function() {
+      thermostat.reset();
       thermostat.powersave = false;
-      thermostat.up(7);
+      for (i = 1; i < 8; i++) {thermostat.up()}
       expect(thermostat.temperature).toBe(27)
   });
 
@@ -45,7 +48,9 @@ describe('Thermostat', function() {
   });
 
   it('checks the usage of the thermostat', function() {
-    thermostat.check(26);
-    expect(thermostat.usage).toBe('high-usage')
+    thermostat.reset();
+    thermostat.powersave = false;
+    for (i = 1; i < 7; i++) {thermostat.up()}
+    expect(thermostat.check()).toBe('high-usage')
   });
 });
